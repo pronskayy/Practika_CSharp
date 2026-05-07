@@ -1,0 +1,53 @@
+﻿<Window x:Class="EmployeeManagement.Views.RegisterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Регистрация" Height="500" Width="420"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#1E1E2E">
+
+    <StackPanel VerticalAlignment="Center" Margin="50,0">
+        <TextBlock Text="Регистрация" FontSize="24" FontWeight="Bold"
+                   Foreground="White" HorizontalAlignment="Center" Margin="0,0,0,30"/>
+
+        <TextBlock Text="Логин" Foreground="#AAA" FontSize="12" Margin="0,0,0,5"/>
+        <TextBox x:Name="RegUsernameBox" Height="40" FontSize="14"
+                 Background="#2D2D3F" Foreground="White"
+                 BorderBrush="#5C5C8A" CaretBrush="White"
+                 Padding="10,0" VerticalContentAlignment="Center"/>
+
+        <TextBlock Text="Пароль" Foreground="#AAA" FontSize="12" Margin="0,15,0,5"/>
+        <PasswordBox x:Name="RegPasswordBox" Height="40" FontSize="14"
+                     Background="#2D2D3F" Foreground="White"
+                     BorderBrush="#5C5C8A" Padding="10,0"/>
+
+        <TextBlock Text="Отдел" Foreground="#AAA" FontSize="12" Margin="0,15,0,5"/>
+        <ComboBox x:Name="DeptComboBox" Height="40" FontSize="14"
+                  Background="#2D2D3F" Foreground="#000000" SelectionChanged="DeptComboBox_SelectionChanged">
+            <ComboBoxItem Content="IT" IsSelected="True"/>
+            <ComboBoxItem Content="HR"/>
+            <ComboBoxItem Content="Финансы"/>
+            <ComboBoxItem Content="Маркетинг"/>
+            <ComboBoxItem Content="Производство"/>
+        </ComboBox>
+
+        <!-- GroupBox + RadioButton (по условию) -->
+        <GroupBox Header="Роль пользователя" Foreground="White"
+                  BorderBrush="#5C5C8A" Padding="10" Margin="0,15,0,0">
+            <StackPanel Orientation="Horizontal">
+                <RadioButton x:Name="UserRole" Content="Пользователь"
+                             IsChecked="True" Foreground="White" Margin="0,0,20,0"/>
+                <RadioButton x:Name="AdminRole" Content="Администратор" Foreground="White"/>
+            </StackPanel>
+        </GroupBox>
+
+        <TextBlock x:Name="ErrorLabel" Foreground="#FF6B6B"
+                   FontSize="12" Margin="0,10,0,0" Visibility="Collapsed"/>
+
+        <Button Content="Зарегистрироваться" Height="45"
+                FontSize="14" FontWeight="Bold"
+                Background="#7C83FD" Foreground="White"
+                BorderThickness="0" Margin="0,20,0,0"
+                Cursor="Hand" Click="RegisterButton_Click"/>
+    </StackPanel>
+</Window>
