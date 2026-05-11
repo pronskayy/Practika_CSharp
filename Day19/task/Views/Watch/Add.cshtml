@@ -1,0 +1,18 @@
+﻿<h2>Добавить фильм/сериал</h2>
+
+<form method="post" action="/Watch/Add">
+    <div>
+        <label>Название:</label>
+        <input type="text" name="Title" required />
+    </div>
+    <div>
+        <label>Тип:</label>
+        <select name="Type">
+            <option value="Фильм">Фильм</option>
+            <option value="Сериал">Сериал</option>
+        </select>
+    </div>
+    <button type="submit">Добавить</button>
+</form>
+
+<a href="/Watch">Назад к списку</a>
