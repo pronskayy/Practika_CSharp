@@ -1,0 +1,61 @@
+﻿@using WatchList.ViewModels
+@model WatchlistItemViewModel
+
+@{
+    ViewData["Title"] = "Добавить в коллекцию";
+}
+
+<h2>Добавить новый фильм или сериал</h2>
+
+<form asp-action="Add" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control" placeholder="Например: Начало, Очень странные дела" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Genre" class="form-label"></label>
+        <input asp-for="Genre" class="form-control" placeholder="Например: Фантастика, Драма, Комедия" />
+        <span asp-validation-for="Genre" class="text-danger"></span>
+        <small class="text-muted">Жанр обязателен для заполнения</small>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Type" class="form-label"></label>
+        <select asp-for="Type" class="form-select">
+            <option value="">-- Выберите --</option>
+            <option value="Film"> Фильм</option>
+            <option value="Series"> Сериал</option>
+        </select>
+        <span asp-validation-for="Type" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Status" class="form-label"></label>
+        <select asp-for="Status" class="form-select">
+            <option value="">-- Выберите статус --</option>
+            <option value="PlanToWatch">⏳ Буду смотреть</option>
+            <option value="Watching">📖 Смотрю сейчас</option>
+            <option value="Watched">✅ Уже посмотрел(а)</option>
+        </select>
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Rating" class="form-label"></label>
+        <input asp-for="Rating" type="number" step="1" min="1" max="10" class="form-control" placeholder="1-10 (необязательно)" />
+        <span asp-validation-for="Rating" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary"> Добавить в список</button>
+    <a asp-action="Index" class="btn btn-secondary">Отмена</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
