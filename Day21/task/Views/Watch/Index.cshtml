@@ -1,0 +1,55 @@
+﻿@model List<WatchList.Models.WatchItem>
+
+<h2>Моя коллекция</h2>
+
+<a href="/Watch/Create"> Добавить</a>
+
+<table border="1" cellpadding="10">
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Тип</th>
+            <th>Статус</th>
+            <th>Действие</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@(item.Type == "Film" ? "Фильм" : "Сериал")</td>
+                <td>
+                    @if (item.Status == "PlanToWatch")
+                    {
+                        <span>Запланировано</span>
+                    }
+                    else if (item.Status == "Watching")
+                    {
+
+                        <span>Смотрю</span>
+                    }
+                    else
+                    {
+
+                        <span>Просмотрено</span>
+                    }
+                </td>
+                <td>
+                    @if (item.Status == "PlanToWatch")
+                    {
+                        <a href="/Watch/ChangeStatus/@item.Id?status=Watching">Начать</a>
+                    }
+                    else if (item.Status == "Watching")
+                    {
+                        <a href="/Watch/ChangeStatus/@item.Id?status=Watched">Готово</a>
+                    }
+                    else
+                    {
+                        <span>✓</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

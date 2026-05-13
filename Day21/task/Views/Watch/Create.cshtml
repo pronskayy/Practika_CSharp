@@ -1,0 +1,33 @@
+﻿@model WatchList.Models.WatchItem
+
+<h2>Добавить</h2>
+
+<form method="post">
+    <div>
+        <label>Название:</label><br />
+        <input asp-for="Title" required />
+    </div>
+    <br />
+
+    <div>
+        <label>Тип:</label><br />
+        <select asp-for="Type">
+            <option value="Film">Фильм</option>
+            <option value="Series">Сериал</option>
+        </select>
+    </div>
+    <br />
+
+    <div>
+        <label>Статус:</label><br />
+        <select asp-for="Status">
+            <option value="PlanToWatch">Запланировано</option>
+            <option value="Watching">Смотрю</option>
+            <option value="Watched">Просмотрено</option>
+        </select>
+    </div>
+    <br />
+
+    <button type="submit">Сохранить</button>
+    <a href="/Watch">Назад</a>
+</form>
