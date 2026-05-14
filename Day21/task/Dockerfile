@@ -1,11 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-
-COPY Day21/task/*.csproj .
+COPY . .
 RUN dotnet restore
-
-COPY Day21/task/ .
-
 RUN dotnet publish -c Release -o /app/publish
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
